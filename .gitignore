@@ -1,0 +1,5 @@
+CLAUDE.md
+Plans/
+.DS_Store
+__pycache__/
+*.py[cod]

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Diff</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Diff</h1>
+
+        <div class="input-section">
+            <div class="file-input">
+                <label for="file-a">Video A</label>
+                <input type="text" id="file-a" placeholder="/path/to/video_a.mp4">
+            </div>
+            <div class="file-input">
+                <label for="file-b">Video B</label>
+                <input type="text" id="file-b" placeholder="/path/to/video_b.mp4">
+            </div>
+            <div class="options">
+                <div class="option">
+                    <label for="granularity">Granularity (seconds)</label>
+                    <input type="number" id="granularity" value="2" min="1" step="1">
+                </div>
+            </div>
+            <div class="button-row">
+                <button id="compare-btn" onclick="runCompare()">Compare</button>
+                <button id="rerun-btn" class="btn-secondary hidden" onclick="runCompare(true)">Re-analyze</button>
+            </div>
+        </div>
+
+        <div id="status" class="status hidden"></div>
+
+        <div id="result-section" class="result-section hidden">
+            <div id="match-badge" class="match-badge"></div>
+            <div id="match-details" class="match-details"></div>
+
+            <div id="viz-section" class="viz-section hidden">
+                <h2>Video</h2>
+                <div id="bars-container">
+                    <svg id="video-viz" class="diff-viz"></svg>
+                </div>
+
+                <div id="scrub-viewer" class="scrub-viewer hidden">
+                    <div class="scrub-pane" id="scrub-pane-a">
+                        <div class="scrub-label">Video A <span id="scrub-time-a"></span></div>
+                        <div class="scrub-frame-wrap" id="scrub-wrap-a">
+                            <img id="scrub-img-a" class="scrub-img" alt="">
+                        </div>
+                    </div>
+                    <div class="scrub-pane" id="scrub-pane-b">
+                        <div class="scrub-label">Video B <span id="scrub-time-b"></span></div>
+                        <div class="scrub-frame-wrap" id="scrub-wrap-b">
+                            <img id="scrub-img-b" class="scrub-img" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="audio-heading" class="hidden">Audio</h2>
+                <svg id="audio-viz" class="diff-viz hidden"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
